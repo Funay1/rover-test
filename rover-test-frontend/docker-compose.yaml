@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nodejs-rover-front-test:
+    build: .
+    command: http-server dist
+    volumes:
+      - .:/home/node/app
+      - /home/node/app/node_modules
+    environment:
+      NODE_ENV: development
+    ports:
+      - '8080:8080'
+
+networks:
+  app-connect:
+    driver: bridge
