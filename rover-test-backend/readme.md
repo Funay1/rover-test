@@ -2,11 +2,6 @@
 
 ## Solution
 
-- To make the code more readable, I create some states called LoanTermRange and CreditScoreRange that are used to meet business requirements.
-
-- To solve the problems and meet all business requirements, I created a function that calculates minumumLoanAmount, maximumLoanAmount based on lendTerm and creditScore and checked if lendAmount is between these values.
-
-- After validating the loanAmount, I calculated the AprPercentage for standard scenarios (base table in the challenge description) and then applied the special rules to create the one based on the year and mileage of the vehicle
 ## Prerequisites
 
 - NodeJS Version V18.20.2, NPM 10.5.5 (you can use VOLTA lib to automatic use it on this project)
@@ -21,14 +16,21 @@ npm install
 
 ## USAGE EXAMPLE
 
-- curl -X 'GET' \
-  'http://localhost:3000/v1/vehicle/apr?loanAmount=10000&loanTerm=36&creditScore=700&vehicleYear=2014&vehicleMileage=50000' \
-  -H 'accept: application/json'
+- curl 'http://localhost:3000/v1/instructions' \
+  -H 'Content-Type: application/json' \
+  -H 'accept: application/json' \
+  --data-raw $'{\n  "initialPosition": {\n    "x": 1,\n    "y": 2,\n    "direction": "N"\n  },\n  "instructions": "LMLMLMLMM"\n}'
 
 Response expected: 
 {
-  "aprRate": "5.75%"
+  "x": 1,
+  "y": 3,
+  "direction": "N"
 }
+
+## Starting application using docker
+
+1. Install docker and run `docker-compose up`
 
 ## Starting application
 
@@ -43,14 +45,3 @@ Response expected:
 ### Unit
 
 1. Run `npm run test:unit`
-
-## Last Coverage summary
-- 
-=============================== Coverage summary ===============================
-Statements   : 90.47% ( 228/252 )
-Branches     : 65.38% ( 17/26 )
-Functions    : 85.71% ( 12/14 )
-Lines        : 90.47% ( 228/252 )
-================================================================================
-Test Suites: 3 passed, 3 total
-Tests:       37 passed, 37 total
